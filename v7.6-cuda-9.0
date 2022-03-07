@@ -1,0 +1,29 @@
+#%Module1.0#####################################################################
+##
+## cudnn v7.6 modulefile
+##
+proc ModulesHelp { } {
+        global version
+
+        puts stderr "\tSets up environment for CUDA $version\n"
+}
+
+
+# for Tcl script use only
+set     name CUDNN
+set     version v7.6
+set     root    /home/ruixiao/SATA2/modulefiles/cudnn_files/cudnn-9.0-${version}
+
+module-whatis   "sets up environment for $name $version"
+
+setenv     CUDNN_ROOT_PATH      $root
+prepend-path     CUDNN_INCLUDE_DIR    $root/include
+prepend-path     C_INCLUDE_PATH       $root/include
+prepend-path     CPLUS_INCLUDE_PATH   $root/include
+prepend-path     CUDNN_LIB_DIR        $root/lib64
+prepend-path     LD_LIBRARY_PATH      $root/lib64
+
+# prepend-path     CUDA_INSTALL_PATH    $root
+# prepend-path     LIBRARY_PATH         $root/lib64
+
+conflict cudnn
